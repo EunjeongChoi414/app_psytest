@@ -1,81 +1,154 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, ScrollView, ImageBackground, TouchableOpacity } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-      </View>
-      <View style={styles.contents}>
-        <View style={styles.subContent}>
-          <View style = {styles.userInfo}>
-            <View style = {styles.profile}></View>
-            <Text style = {styles.name}>스파르타코딩 클럽</Text>
-          </View>
-          <View style={styles.userComment}>
-            <Text>안녕하세요 대표 이범규입니다</Text>
-          </View>
-        </View>
+      <View style={styles.container}>
+        <ScrollView>
+            <View>
+                <ScrollView horizontal={true}>
+                    <TouchableOpacity>
+                        <View style={styles.categoryMain}>
+                            <Text style={styles.categoryMainTitle}>전체</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <View style={styles.category}>
+                            <Text style={styles.categoryTitle}>무의식심리</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <View style={styles.category}>
+                            <Text style={styles.categoryTitle}>짝사랑심리</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <View style={styles.category}>
+                            <Text style={styles.categoryTitle}>연애심리</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <View style={styles.category}>
+                            <Text style={styles.categoryTitle}>색체심리</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <View style={styles.category}>
+                            <Text style={styles.categoryTitle}>대인관계심리</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <View style={styles.category}>
+                            <Text style={styles.categoryTitle}>스트레스심리</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <View style={styles.category}>
+                            <Text style={styles.categoryTitle}>IQ테스트</Text>
+                        </View>
+                    </TouchableOpacity>
+                </ScrollView>
+            </View>
 
-        <View style={styles.subContent}>
-          <View style = {styles.userInfo}>
-            <View style = {styles.profile}></View>
-            <Text style = {styles.name}>김건희</Text>
-          </View>
-          <View style={styles.userComment}>
-            <Text>좀만 참아보세요 오늘 강의 거의 다왔습니다</Text>
-          </View>f
-        </View>
+            <View style={styles.vScrollView}>
+                <TouchableOpacity>
+                    <ImageBackground source={{uri:"https://glenncy.s3.ap-northeast-2.amazonaws.com/st/problem/image/640/1581409063001.jpg"}} resizeMode="cover" style={styles.scrollList}>
+                        <Text style={styles.imageText}>네모네모 영역</Text>
+                    </ImageBackground>
+                </TouchableOpacity>  
+                <TouchableOpacity>
+                    <ImageBackground source={{uri:"https://glenncy.s3.ap-northeast-2.amazonaws.com/st/problem/image/640/1581409063001.jpg"}} resizeMode="cover" style={styles.scrollList}>
+                        <Text style={styles.imageText}>네모네모 영역</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <ImageBackground source={{uri:"https://glenncy.s3.ap-northeast-2.amazonaws.com/st/problem/image/640/1581409063001.jpg"}} resizeMode="cover" style={styles.scrollList}>
+                        <Text style={styles.imageText}>네모네모 영역</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <ImageBackground source={{uri:"https://glenncy.s3.ap-northeast-2.amazonaws.com/st/problem/image/640/1581409063001.jpg"}} resizeMode="cover" style={styles.scrollList}>
+                        <Text style={styles.imageText}>네모네모 영역</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <ImageBackground source={{uri:"https://glenncy.s3.ap-northeast-2.amazonaws.com/st/problem/image/640/1581409063001.jpg"}} resizeMode="cover" style={styles.scrollList}>
+                        <Text style={styles.imageText}>네모네모 영역</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <ImageBackground source={{uri:"https://glenncy.s3.ap-northeast-2.amazonaws.com/st/problem/image/640/1581409063001.jpg"}} resizeMode="cover" style={styles.scrollList}>
+                        <Text style={styles.imageText}>네모네모 영역</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <ImageBackground source={{uri:"https://glenncy.s3.ap-northeast-2.amazonaws.com/st/problem/image/640/1581409063001.jpg"}} resizeMode="cover" style={styles.scrollList}>
+                        <Text style={styles.imageText}>네모네모 영역</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <ImageBackground source={{uri:"https://glenncy.s3.ap-northeast-2.amazonaws.com/st/problem/image/640/1581409063001.jpg"}} resizeMode="cover" style={styles.scrollList}>
+                        <Text style={styles.imageText}>네모네모 영역</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+            </View>
+
+        </ScrollView>
       </View>
-      <View style={styles.footer}>
-      </View>
-    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex:1
-  },
-  header: {
-    height: 60,
-    backgroundColor:"green"
-  },
-  contents:{
-    flex:1,
-  },
-  subContent: {
-    width: '100%',
-    flexDirection: "row",
-    justifyContent: "space-between",
-    borderColor: "#eee",
-    borderWidth: 1,
-    padding: 10,
-    backgroundColor:"white",
-    alignItems: "center"
-  },
-  userInfo : {
-    flexDirection: "row", 
-    alignItems: "center"
-  },
-  profile: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: "orange",
-    justifyContent: "flex-start"
-  },
-  name : {
-    margin: 10,
-  },
-  userComment: {
-    backgroundColor: "yellow",
-    justifyContent: "flex-end",
-    padding: 10,
-    borderRadius: 10
-  },
-  footer:{
-    height: 60,
-    backgroundColor: "red"
-  }
+    container: {
+        flex: 1,
+        backgroundColor: '#000',
+    },
+    categoryMain: {
+        width: 100,
+        height: 30,
+        borderColor: 'hotpink',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderRadius: 5,
+        marginTop: 30,
+        marginLeft: 15
+        
+    },
+    categoryMainTitle: {
+        color: 'hotpink',
+        textAlign: 'center', 
+        marginTop: 4
+    },
+    category: {
+        width: 100,
+        height: 30,
+        borderColor: '#fff',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderRadius: 5,
+        marginTop: 30,
+        marginLeft: 15
+        
+    },
+    categoryTitle: {
+        color: '#fff',
+        textAlign: 'center', 
+        marginTop: 4
+    },
+    scrollList: {
+        width: Dimensions.get("window").width/3,
+        height: Dimensions.get("window").height/5
+    },
+    vScrollView: {
+        marginTop: 10,
+        flexDirection: 'row',
+        flexWrap: 'wrap'
+    },
+    imageText: {
+        flex: 1,
+        textAlign: 'right',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        color: '#fff',
+        fontWeight: '700'
+    }
 });
