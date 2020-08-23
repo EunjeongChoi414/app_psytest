@@ -1,14 +1,15 @@
 import React from "react";
 import {TouchableOpacity,View,Text,StyleSheet} from "react-native";
 
-//App.js에서 title값을 넘겨줄 계획입니다.
-//그럼 category 컴포넌트에선 값을 받아 표시해주면 됩니다.
-const Category = ({title}) => {
-    return (
-        <TouchableOpacity>
-            <View style={styles.category}><Text style={styles.categoryTitle}>{title}</Text></View>
-        </TouchableOpacity >
-    )
+//넘겨 받은 함수명, 즉 속성명 그대로 받아서 사용하면 됩니다.
+const Category = ({title,selectCategory}) => {
+  return (
+      // 버튼을 누르면 이 카테고리가 가지고 있는 타이틀을 함수로 넘겨줍니다.
+      //타이틀은 곧 카테고리니까요!
+      <TouchableOpacity onPress={()=>selectCategory(title)}>
+          <View style={styles.category}><Text style={styles.categoryTitle}>{title}</Text></View>
+      </TouchableOpacity >
+  )
 }
 
 export default Category;
