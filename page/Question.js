@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import {View,Text,StyleSheet, Image, Dimensions,ScrollView} from "react-native";
-import AnswerTitleCard from "../components/AnswerTitleCard"
+import {View,Text,StyleSheet, Image, Dimensions,ScrollView,TouchableOpacity} from "react-native";
 
 export default function Question() {
 
@@ -82,16 +81,16 @@ const [questionState, setQuestionState] = useState({
         <View style={styles.Container}>
 
             <Image style={styles.image} source={{uri: questionState.image}}/>
-            <View style={styles.title}>
-                <Text style={styles.titleText}>{questionState.title}</Text>
-            </View>
-            <View style={styles.question}>
-                <Text style={styles.questionText}>{questionState.question}</Text>
-            </View>
+            <Text style={styles.titleText}>{questionState.title}</Text>
+            <Text style={styles.questionText}>{questionState.question}</Text>
             <ScrollView>
-                {questionState["answer"].map((data,i)=>{
-                    return <AnswerTitleCard key={i} title={data.answer_title} order={data.answer_order}/>
-                  })}
+                {questionState.answer.map((data,i)=>{
+                    return (
+                        <TouchableOpacity key={i} style={styles.answerTitle}>
+                            <Text style={styles.answerTitleText}>{data.answer_order + '.' +data.answer_title}</Text>
+                        </TouchableOpacity>
+                    )
+                })}
             </ScrollView>
            
         </View>
@@ -109,19 +108,33 @@ const styles = StyleSheet.create({
      width: Dimensions.get('window').width,
      height: 120,
     },
-    title: {
-        margin: 15
-    },
     titleText: {
         color: "hotpink",
-        fontSize: 15
-    },
-    question: {
-        margin: 15
+        fontSize: 15,
+        padding: 15,
+        marginTop: 5
     },
     questionText: {
         color: "#fff",
-        fontSize: 17
+        fontSize: 17,
+        padding: 15,
+        marginBottom: 5
+    },
+    answerTitle: {
+        width: 380,
+        height: 100,
+        margin: 10,
+        borderColor: "white",
+        borderWidth: 1,
+        borderStyle: "solid",
+        borderRadius: 10,
+        flex: 1,
+        justifyContent: "center"
+    },
+    answerTitleText: {
+        color: "#fff",
+        fontSize: 15,
+        marginLeft: 30
     },
    
 
