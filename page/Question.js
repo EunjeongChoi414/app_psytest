@@ -77,9 +77,6 @@ const Question = ({navigation,route}) => {
         ]
     })
     // 복습겸 다시 써보는 해체 할당 방식의 변수 정의!
-    const { title} = route.params;
-    const {image} = route.params;
-    const {question} = route.params;
 
     useEffect(()=>{
         navigation.setOptions({
@@ -87,21 +84,29 @@ const Question = ({navigation,route}) => {
         })
     },[])
     
+    const {title} = route.params;
+
     console.log("건네 받은 타이틀: "+ title)
     return (
      
         <View style={styles.container}>
-            <Image source={{uri:image}} resizeMode="cover" style={styles.questionImage}/>
-            <Text style={styles.questionTitle}>{title}</Text>
-            <Text style={styles.question}>{question}</Text>
+            <Image source={{uri:questionState.image}} resizeMode="cover" style={styles.questionImage}/>
+            <Text style={styles.questionTitle}>{questionState.title}</Text>
+            <Text style={styles.question}>{questionState.question}</Text>
             <View style={styles.answerList}>
                 <ScrollView>
                     {/* 문제에 딸린 답들을 나열 */}
                     {questionState.answer.map((a,i)=>{
                         //결과 화면에선 문제, 문제 이미지, 답, 해설 그리고 히스토리에 저장 할 문제 번호와 답안 번호를 goResult 함수에 넘겨줍니다.
                         return (
-                        <TouchableOpacity key={i} style={styles.answerView} onPress={()=> navigation.navigate("Result",{
-                            result: a.answer_desc, 
+                        <TouchableOpacity 
+                        key={i} 
+                        style={styles.answerView} 
+                        onPress={()=> navigation.navigate("Result",{
+                            desc: a.answer_desc, 
+                            image: questionState.image,
+                            question: questionState.question,
+                            answer: a.answer_title
                           })}>
                             <Text style={styles.answerText} >{Number(i + 1) + '.' + a.answer_title}</Text>
                         </TouchableOpacity>)

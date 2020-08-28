@@ -71,8 +71,6 @@ export default function Main({navigation}){
                     return <ButtonCard key={i} 
 												title={data.title} 
                         image={data.image} 
-                        question={data.question}
-                        answer={data.answer}
 												navigation={navigation}/>
                   })}
                 </View>

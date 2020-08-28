@@ -2,12 +2,10 @@ import React from 'react';
 //설치한 스택 네비게이션 라이브러리를 가져옵니다
 import { createStackNavigator } from '@react-navigation/stack';
 
-import TabNavigator from './TabNavigator';
-
 //페이지로 만든 컴포넌트들을 불러옵니다
 import Question from '../page/Question';
-import Main from '../page/Main';
 import Result from '../page/Result';
+import TabNavigator from './TabNavigator';
 
 //스택 네비게이션 라이브러리가 제공해주는 여러 기능이 담겨있는 객체를 사용합니다
 //그래서 이렇게 항상 상단에 선언하고 시작하는게 규칙입니다!

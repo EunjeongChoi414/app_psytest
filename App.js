@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-import Result from './page/Result';
 
 //메인에 세팅할 네비게이션 도구들을 가져옵니다.
 import {NavigationContainer} from '@react-navigation/native';
@@ -53,10 +52,9 @@ export default function App() {
     //   <StatusBar style="black" />
     //   <Main/>
     // </>
-    <Result/>
-  //   <NavigationContainer>
-  //     <StatusBar style="black" />
-  //     <StackNavigator/>
-  //  </NavigationContainer>
+    <NavigationContainer>
+      <StatusBar style="black" />
+      <StackNavigator/>
+   </NavigationContainer>
   )
 }
