@@ -7,9 +7,11 @@ import { StyleSheet, Text, View,ScrollView,Dimensions,TouchableOpacity,ImageBack
 import ButtonCard from "../components/ButtonCard";
 import Category from "../components/Category";
 import data from "../data.json";
-import category from "../category.json"
+import category from "../category.json";
 
-export default function Main(){
+//책갈비에선 Main 컴포넌트에게 Props 형태로 
+// 페이지 이동 객체 데이터를 전달해줍니다
+export default function Main({navigation}){
 
     //문제 데이터를 관리하는 상태입니다.
     const [questionState,setQuestionState] = useState([])
@@ -65,10 +67,13 @@ export default function Main(){
                       고유 하다는 것을 알려줘야 해서요!
                   */}
                   {cateQuestionState.map((data,i)=>{
-                    //반복으로 돌면서 컴포넌트를 반환합니다.
-                    //어디로 여러분이 만든 컴포넌트를 화면에 보여줘야 하니까
-                    //결국 return 으로 반환하며화면을 그려줘야 합니다.
-                    return <ButtonCard key={i} title={data.title} image={data.image}/>
+		                 //카드 버튼에서 사용해야 하므로, navigation을 건네줍니다
+                    return <ButtonCard key={i} 
+												title={data.title} 
+                        image={data.image} 
+                        question={data.question}
+                        answer={data.answer}
+												navigation={navigation}/>
                   })}
                 </View>
             </ScrollView>
