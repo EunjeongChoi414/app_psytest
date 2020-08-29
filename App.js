@@ -4,12 +4,6 @@ import React,{useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import StackNavigator from './navigation/StackNavigator'
 
-//이제 모든 페이지 컴포넌트들이 끼워져있는 책갈피를 메인에 둘예정이므로
-//컴포넌트를 더이상 불러오지 않아도 됩니다.
-// import Main from "./page/Main"
-// import Loading from "./page/Loading";
-// import Question from "./page/Question";
-
 import { AppLoading } from 'expo';
 
 //expo install expo-font 로 설치
@@ -44,14 +38,8 @@ export default function App() {
     setIsLoading(false)
   }
 
-
-  //return <Loading/>
-  // return <Question/>
   return isLoading ? <AppLoading startAsync={funcStart} onError={funcError} onFinish={funcFinish} /> : (
-    // <>
-    //   <StatusBar style="black" />
-    //   <Main/>
-    // </>
+ 
     <NavigationContainer>
       <StatusBar style="black" />
       <StackNavigator/>
