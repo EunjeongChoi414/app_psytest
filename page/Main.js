@@ -6,12 +6,22 @@ import { StyleSheet, Text, View,ScrollView,Dimensions,TouchableOpacity,ImageBack
 //../ <- 나가고 components 폴더로 들어갔습니다.
 import ButtonCard from "../components/ButtonCard";
 import Category from "../components/Category";
-import data from "../data.json";
-import category from "../category.json";
 
+
+//이제 파이어베이스에서 가져올 테니까 주석처리!
+// import data from "../data.json";
+
+//파이어베이스를 사용할 땐 항상 설정 파일을 임포트하기
+import {firebase_db} from "../firebaseConfig"
+import category from "../category.json"
+
+import Loading from "./Loading";
 //책갈비에선 Main 컴포넌트에게 Props 형태로 
 // 페이지 이동 객체 데이터를 전달해줍니다
-export default function Main({navigation}){
+export default Main = ({navigation}) => {
+
+    //로딩 상태 관리
+    const [isLoading,setIsLoading] = useState(true);
 
     //문제 데이터를 관리하는 상태입니다.
     const [questionState,setQuestionState] = useState([])
@@ -36,16 +46,21 @@ export default function Main({navigation}){
   //그리고 이 콜백 함수 안에 자동으로 구현되어야 할 로직을 작성해 넣으면 됩니다.
   useEffect(()=>{
     console.log("나 처음이자 마지막으로 실행 된다~~")
-    setQuestionState(data.question)
-    setCategoryState(category.data)
-    setCateQuestionState(data.question)
+    firebase_db.ref('/question').once('value').then((snapshot) => {
+      console.log("파이어베이스에서 데이터 가져왔습니다!!")
+      let question = snapshot.val();
+      setQuestionState(question)
+      setCategoryState(category.data)
+      setCateQuestionState(question)
+      setIsLoading(false)
+    });
   },[])
 
 
   //그럼 상태에는 문제 데이터가 리스트형태로 들어 있곘죠? 콘솔에서 확인해보세요
   // console.log(categoryState)
 
-  return (
+  return isLoading ? <Loading/> : (
     <View style={styles.container}>
       <ScrollView>
                 <View>
@@ -69,8 +84,9 @@ export default function Main({navigation}){
                   {cateQuestionState.map((data,i)=>{
 		                 //카드 버튼에서 사용해야 하므로, navigation을 건네줍니다
                     return <ButtonCard key={i} 
+                        idx={data.idx}
 												title={data.title} 
-                        image={data.image} 
+												image={data.image} 
 												navigation={navigation}/>
                   })}
                 </View>
